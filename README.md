@@ -1,8 +1,8 @@
 # Ghost_Game
 Ruby implementation of everyone's (or maybe just my) favorite road-trip word game, Ghost.
 - [x] Phase 1
-- [x] Phase 2
-- [x] Phase 3
+- [ ] Phase 2
+- [ ] Phase 3
 - [ ] Phase Bonus
 
 ## Learning Goals
