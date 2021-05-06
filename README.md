@@ -1,8 +1,8 @@
 # Ghost_Game
 Ruby implementation of everyone's (or maybe just my) favorite road-trip word game, Ghost.
 - [x] Phase 1
-- [ ] Phase 2
-- [ ] Phase 3
+- [x] Phase 2
+- [x] Phase 3
 - [ ] Phase Bonus
 
 ## Learning Goals
@@ -23,11 +23,11 @@ The Game checks the fragment against a dictionary; if the fragment is a word con
 #### Sample Code
 ```Ruby
   def valid_play?(string)
-        return false if !ALPHA.include?(string)
-        potential_fragment = fragment + string
-        return false if !dictionary.any? { |word| word.start_with?(potential_fragment) }
-        @fragment += string
-    end
+    return false if !ALPHA.include?(string)
+    potential_fragment = fragment + string
+    return false if !dictionary.any? { |word| word.start_with?(potential_fragment) }
+    @fragment += string
+  end
 ```
 #### Phase Preview
 ![todo_board-gif](https://media.giphy.com/media/xNgIWE7gNv21T99uhw/giphy.gif)
@@ -37,12 +37,12 @@ Now that we have the logic to play a single round of Ghost, we'll have to add an
 
 #### Sample Code
 ```Ruby
-  def valid_play?(string)
-        return false if !ALPHA.include?(string)
-        potential_fragment = fragment + string
-        return false if !dictionary.any? { |word| word.start_with?(potential_fragment) }
-        @fragment += string
-    end
+ def initialize(*players)    
+    words = File.readlines("dictionary.txt").map(&:chomp)
+    @dictionary = Set.new(words)
+    @fragment = ""
+    @losses = Hash.new { |losses, player| losses[player] = 0 }
+  end
 ```
 
 #### Phase Preview
@@ -53,12 +53,17 @@ Refactor your game to work with more than just two players. Instead of ending th
 
 #### Sample Code
 ```Ruby
-  def valid_play?(string)
-        return false if !ALPHA.include?(string)
-        potential_fragment = fragment + string
-        return false if !dictionary.any? { |word| word.start_with?(potential_fragment) }
-        @fragment += string
-    end
+def play_round
+  @fragment = ""
+  welcome
+
+  until round_over?
+    take_turn
+    next_player!
+  end
+
+  update_standings
+end
 ```
 
 #### Phase Preview
@@ -69,12 +74,9 @@ Write an AiPlayer class for your Ghost game. You'll need to figure out the logic
 
 #### Sample Code
 ```Ruby
-  def valid_play?(string)
-        return false if !ALPHA.include?(string)
-        potential_fragment = fragment + string
-        return false if !dictionary.any? { |word| word.start_with?(potential_fragment) }
-        @fragment += string
-    end
+def intialize 
+  #bonus phase code here
+end
 ```
 
 #### Phase Preview
