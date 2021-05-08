@@ -1,5 +1,6 @@
 require "set"
 require_relative "player"
+require_relative "aiplayer"
 
 class GhostGame
   ALPHABET = Set.new("a".."z")
@@ -15,6 +16,10 @@ class GhostGame
   def run
     play_round until game_over?
     puts "#{winner} wins!"
+  end
+
+  def player_count
+    @players.count
   end
 
   private
@@ -93,7 +98,9 @@ class GhostGame
   def welcome
     system("clear")
     puts "Let's play a round of Ghost!"
+    puts "Number of Players: #{player_count}"
     display_standings
+    sleep(2)
   end
 
   def take_turn
@@ -112,6 +119,8 @@ class GhostGame
 
     add_letter(letter)
     puts "#{current_player} added the letter '#{letter}' to the fragment."
+    puts "Current word fragment '#{fragment}'."
+    sleep(3)
   end
 
   def display_standings
@@ -121,7 +130,7 @@ class GhostGame
       puts "#{player}: #{record(player)}"
     end
 
-    sleep(2)
+    sleep(3)
   end
 
   def update_standings
@@ -132,7 +141,7 @@ class GhostGame
 
     if losses[previous_player] == MAX_LOSS_COUNT - 1
       puts "#{previous_player} has been eliminated!"
-      sleep(1)
+      sleep(2)
     end
     
     losses[previous_player] += 1
@@ -143,10 +152,11 @@ end
 
 if $PROGRAM_NAME == __FILE__
   game = GhostGame.new(
-    Player.new("Gizmo"), 
-    Player.new("Breakfast"), 
-    Player.new("Toby"),
-    Player.new("Leonardo")
+    Player.new("Kyle"), 
+    # Player.new("Breakfast"), 
+    # Player.new("Toby"),
+    # Player.new("Leonardo"),
+    AiPlayer.new("AI_Player")
     )
 
   game.run

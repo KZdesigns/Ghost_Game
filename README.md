@@ -3,7 +3,7 @@ Ruby implementation of everyone's (or maybe just my) favorite road-trip word gam
 - [x] Phase 1
 - [x] Phase 2
 - [x] Phase 3
-- [ ] Phase Bonus
+- [x] Phase Bonus
 
 ## Learning Goals
 - Understand how different classes interact
@@ -29,8 +29,6 @@ The Game checks the fragment against a dictionary; if the fragment is a word con
     @fragment += string
   end
 ```
-#### Phase Preview
-![todo_board-gif](https://media.giphy.com/media/xNgIWE7gNv21T99uhw/giphy.gif)
 
 ### Phase 2: Playing a Full Game
 Now that we have the logic to play a single round of Ghost, we'll have to add another layer.
@@ -44,9 +42,6 @@ Now that we have the logic to play a single round of Ghost, we'll have to add an
     @losses = Hash.new { |losses, player| losses[player] = 0 }
   end
 ```
-
-#### Phase Preview
-![todo_board-gif](https://media.giphy.com/media/xNgIWE7gNv21T99uhw/giphy.gif)
 
 ### Phase 3: Multiplayer!
 Refactor your game to work with more than just two players. Instead of ending the game when one of the players reaches five losses, simply exclude that player from further rounds. End the game when only one player is left standing. Hint: You won't be able to use an instance variable for each player anymore. What data structure might we use as an alternative?
@@ -66,20 +61,19 @@ def play_round
 end
 ```
 
-#### Phase Preview
-![todo_board-gif](https://media.giphy.com/media/xNgIWE7gNv21T99uhw/giphy.gif)
-
 ### Phase Bonus
 Write an AiPlayer class for your Ghost game. You'll need to figure out the logic for picking a winning letter on each turn. In order to do this, your AiPlayer will need to know both the current fragment and the number of other players (n).
 
 #### Sample Code
 ```Ruby
-def intialize 
-  #bonus phase code here
+def initialize(name)
+    words = File.readlines("dictionary.txt").map(&:chomp)
+    @dictionary = Set.new(words)
+    @name = name
 end
 ```
 
-#### Phase Preview
+## Game Preview
 ![todo_board-gif](https://media.giphy.com/media/xNgIWE7gNv21T99uhw/giphy.gif)
 
 ## Gameplay Overview
