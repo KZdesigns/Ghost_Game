@@ -74,10 +74,10 @@ end
 ```
 
 ## Game Preview
-![todo_board-gif](https://media.giphy.com/media/xNgIWE7gNv21T99uhw/giphy.gif)
+![todo_board-gif](https://media.giphy.com/media/ZZuT9KlXUash1jBr6U/giphy.gif)
 
 ## Gameplay Overview
-- youtube link
+- https://www.youtube.com/embed/E0a2TPEJI3Q
 
 ## Tech Used
 - Ruby 3.0
